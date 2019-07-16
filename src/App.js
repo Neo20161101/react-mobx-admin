@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider ,observer,inject } from 'mobx-react'
-import {  Switch,HashRouter,hashHistory } from 'react-router-dom';
-import { Route } from 'react-router'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Switch, Route } from 'react-router'
 import './App.css';
 import routers from './router/router';
 import Menu from './Menu';
@@ -13,7 +13,7 @@ class App extends Component {
         const { store:{title} } = this.props;
         return (
             <Provider {...this.props}>
-                <hashHistory basename="/calendar">
+                <Router>
                     <div>
                         <Menu />
                         {/*这是左侧导航栏*/}
@@ -24,7 +24,7 @@ class App extends Component {
                             <Route component={NotFound}/>
                         </Switch>
                     </div>
-                </hashHistory>
+                </Router>
             </Provider>
 
         );
