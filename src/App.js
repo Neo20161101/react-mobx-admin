@@ -4,26 +4,55 @@ import { HashRouter } from 'react-router-dom'
 import { Router,Switch, Route } from 'react-router'
 import './App.css';
 import routers from './router/router';
-import Menu from './Menu';
+import Menus from './Menu';
 import NotFound from './NotFound/index';
+import { Layout, Icon } from 'antd';
+import 'antd/dist/antd.css';
+
+const { Header, Sider, Content } = Layout;
 
 @inject("store") @observer
 class App extends Component {
+
+    toggle = () => {
+        // this.setState({
+        //     collapsed: !this.state.collapsed,
+        // });
+    }
+
     render() {
         const { store:{title} } = this.props;
         return (
             <Provider {...this.props}>
                 <HashRouter>
-                    <div>
-                        <Menu />
+                    <Layout id="components-layout-demo-custom-trigger">
+                        <Menus />
                         {/*这是左侧导航栏*/}
-                        <Switch>
-                            {routers.map((route, i) => {
-                                return <Route key={i} exact path={route.path} component={route.component}/>
-                            })}
-                            <Route component={NotFound}/>
-                        </Switch>
-                    </div>
+                        <Layout>
+                            <Header style={{ background: '#fff', padding: 0 }}>
+                                <Icon
+                                    className="trigger"
+                                    type={false ? 'menu-unfold' : 'menu-fold'}
+                                    onClick={this.toggle}
+                                />
+                            </Header>
+                            <Content
+                                style={{
+                                    margin: '24px 16px',
+                                    padding: 24,
+                                    background: '#fff',
+                                    minHeight: 280,
+                                }}
+                            >
+                                <Switch>
+                                    {routers.map((route, i) => {
+                                        return <Route key={i} exact path={route.path} component={route.component}/>
+                                    })}
+                                    <Route component={NotFound}/>
+                                </Switch>
+                            </Content>
+                        </Layout>
+                    </Layout>
                 </HashRouter>
             </Provider>
 

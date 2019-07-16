@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.0",
+    "antd": "^3.20.3",
     "axios": "^0.18.0",
     "customize-cra": "^0.2.12",
     "mobx": "^5.9.4",
