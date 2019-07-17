@@ -9,18 +9,8 @@ const ref = React.createRef();
 @inject("store") @observer
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-
-    }
-
-    componentDidMount() {
-       // console.log(this)
-    }
-
     render() {
         const { store:{fetchProjectsSuccess,fetchPro} } = this.props;
-        console.dir(this);
         return (
             <Provider AboutStore={Store}>
                 <div className="App">

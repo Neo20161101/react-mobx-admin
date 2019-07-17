@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import { Provider,observer,inject } from "mobx-react";
+import { Link } from 'react-router-dom'
 
 @inject("store") @observer
 class App extends Component {
 
-    render() {
+    componentDidMount() {
+        this.props.store.title = "全局被更改";
         console.log(this);
+    }
+
+    render() {
         const { store:{fetchProjectsSuccess,fetchPro} } = this.props;
         return (
             <div className="App">
                 <header>
                     <p className="classs">
-                        这是关于这是首页
+                        这是首页
                     </p>
-                    <a href="/page/about">跳转关于页面</a>
+                    <Link to="/page/about">跳转关于页面</Link>
                     <button type="button" onClick={fetchPro} className='btn'>这是首页</button>
                 </header>
             </div>

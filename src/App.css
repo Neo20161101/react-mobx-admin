@@ -54,4 +54,11 @@ html,body,#root{
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+  color: #fff;
+  text-align: center;
+  line-height: 32px;
+}
+#components-layout-demo-custom-trigger .logo img{
+  width: 30px;
+  vertical-align: text-top;
 }

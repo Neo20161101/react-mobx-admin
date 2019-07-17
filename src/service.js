@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { notification } from 'antd';
 
 const foodstp = "https://foodstp.com/";
 const localhost = "http://localhost:3000/";
 
 export default async function fetchRequest(url,method,body) {
-     return await axios({
+    return await axios({
          method: method,
          url: url,
          baseURL: localhost,
@@ -15,27 +16,47 @@ export default async function fetchRequest(url,method,body) {
          if(response.status === 200 || response.status === 304){
              return response.data;
          }else {
-             alert(response.statusText)
+             notification['warning']({
+                 message: response.message || response.msg,
+                 description:response.statusText,
+                 onClick: () => {
+                     console.log(response);
+                 },
+             });
          }
      }).catch(function (error) {
          if (error.response) {
              // The request was made and the server responded with a status code
              // that falls out of the range of 2xx
-             console.log(error.response.data);
-             console.log(error.response.status);
-             console.log(error.response.headers);
+             notification['error']({
+                 message: error.message,
+                 description:error.response.statusText,
+                 onClick: () => {
+                     console.log(error.response);
+                 },
+             });
          } else if (error.request) {
              // The request was made but no response was received
              // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
              // http.ClientRequest in node.js
-             console.log(error.request);
-             alert("已提出请求，但未收到答复")
+             notification['error']({
+                 message: "已发出请求，未收到答复！",
+                 description:error.request.statusText,
+                 onClick: () => {
+                     console.log(error.request);
+                 },
+             });
          } else {
              // Something happened in setting up the request that triggered an Error
-             alert(error.message);
+             notification['error']({
+                 message: error.message,
+                 description:error.stack,
+                 onClick: () => {
+                     console.log(error);
+                 },
+             });
          }
-         //console.log(error.config);
-         console.dir(error);
-     });
+         return {status:500};
+    });
 
 }

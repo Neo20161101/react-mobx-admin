@@ -1,25 +1,21 @@
-import Loadable from 'react-loadable';
-const Loading = () => "<div>Loading...</div>";
+import React, { lazy } from 'react';
 
 
-const TodoView = Loadable({
-    loader: () => import('../home/home/index'),
-    loading: Loading,
-});
 
-const About = Loadable({
-    loader: () => import('../About/About/index'),
-    loading: Loading,
-});
+
+const TodoView = lazy(() => import('../home/home/index'));
+const About = lazy(() => import('../About/About/index'));
 export default [
     {
         path: '/',
-        name: 'TodoList',
+        name: '首页',
+        icon:"home",
         component: TodoView
     },
     {
         path: '/page/about',
-        name: 'About',
+        name: '关于我们',
+        icon:"user",
         component: About
     }
 ]

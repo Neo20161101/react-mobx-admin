@@ -8,11 +8,11 @@ class Todo {
     }
     id = Math.random();
     title = "app全局";
-    finished = false;
+    collapsed = false;
     fetchProjectsSuccess=()=>{console.log("执行动作，",this.id);this.title = "被子组件更改"};
     fetchPro = () =>{
         Fetch("webapi/api/login","post",{login_name:"12345678911",password:"123456"}).then(function (res) {
-            console.log(res)
+            console.dir(res)
         })
         // 获取远端图片
 
@@ -22,7 +22,7 @@ class Todo {
 }
 decorate(Todo, {
     title: observable,
-    finished: observable,
+    collapsed: observable,
     fetchProjectsSuccess:action,
     fetchPro:action
 });
