@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import About from "../../App";
-import { observer,inject } from 'mobx-react'
+import { observer,inject } from 'mobx-react';
+import axios from 'axios';
 
 @inject("store","AboutStore") @observer
 class App extends Component {
@@ -11,7 +12,16 @@ class App extends Component {
         };
     }
     fetchProjectsSuccess = () => {
-        console.log(this.props);
+        axios.post('http://zhangr.free.idcfengye.com/xcx/mall/list', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {

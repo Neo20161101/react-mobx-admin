@@ -13,7 +13,7 @@ export default async function fetchRequest(url,method,body) {
          headers: {'X-Requested-With': 'XMLHttpRequest','Accept':"*/*",'apiCheckSum':'b5a2961c7165bd9c466847cc206b6d94','ApiKey':'88d85d8a6b9d4e409e817dca1c2cd1fb'},
      }).then(function (response) {
          console.log(response);
-         if(response.status === 200 || response.status === 304){
+         if(response.status >= 200 || response.status <= 304){
              return response.data;
          }else {
              notification['warning']({
@@ -25,6 +25,7 @@ export default async function fetchRequest(url,method,body) {
              });
          }
      }).catch(function (error) {
+         console.error("error:",error);
          if (error.response) {
              // The request was made and the server responded with a status code
              // that falls out of the range of 2xx

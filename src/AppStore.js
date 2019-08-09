@@ -8,8 +8,11 @@ class Todo {
     }
     id = Math.random();
     title = "app全局";
+    loggedIn = true;
     collapsed = false;
-    fetchProjectsSuccess=()=>{console.log("执行动作，",this.id);this.title = "被子组件更改"};
+    fetchProjectsSuccess=()=>{
+
+    };
     fetchPro = () =>{
         Fetch("webapi/api/login","post",{login_name:"12345678911",password:"123456"}).then(function (res) {
             console.dir(res)

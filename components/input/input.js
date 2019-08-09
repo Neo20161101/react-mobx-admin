@@ -6,7 +6,7 @@ const app = inject("store","AboutStore")(observer(
     class App extends Component {
 
         fetchProjectsSuccess = () => {
-            console.log(this.props);
+
         }
 
         render() {
@@ -16,7 +16,7 @@ const app = inject("store","AboutStore")(observer(
                         <p>
                             这是输入框
                         </p>
-                        <button type="button" onClick={this.fetchProjectsSuccess} className='btn'>添加</button>
+                        <button type="button" onClick={this.fetchProjectsSuccess} className='btn'>添加1</button>
                     </header>
                 </div>
             );

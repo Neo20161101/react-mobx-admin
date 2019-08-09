@@ -11,7 +11,7 @@ class Menus extends Component{
     constructor(props){
         super(props);
         this.state = {
-            SelectedKey:["/"]
+            SelectedKey:["/about"]
         }
     }
 
@@ -26,6 +26,7 @@ class Menus extends Component{
 
     render(){
         const {SelectedKey} = this.state;
+        console.log(this);
         return(
             <Sider breakpoint="sm"
                    collapsedWidth="0"
