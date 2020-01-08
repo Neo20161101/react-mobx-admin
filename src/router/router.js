@@ -6,13 +6,14 @@ import React, { lazy } from 'react';
 const TodoView = lazy(() => import('../home/home/index'));
 const About = lazy(() => import('../About/About/index'));
 const Register = lazy(() => import('../User/Register/index'));
+const Login = lazy(() => import('../User/Login/index'));
 export default [
     {
         path: "/login",
         name: 'Login',
         icon:"user",
         hideInMenu:true,
-        component: Register
+        component: Login
     },
     {
         path: "/about",

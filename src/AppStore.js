@@ -8,15 +8,14 @@ class Todo {
     }
     id = Math.random();
     title = "app全局";
-    loggedIn = true;
+    loggedIn = false; //是否登陆
     collapsed = false;
-    fetchProjectsSuccess=()=>{
+    fetchProjectsSuccess = () => {
 
     };
-    fetchPro = () =>{
-        Fetch("webapi/api/login","post",{login_name:"12345678911",password:"123456"}).then(function (res) {
-            console.dir(res)
-        })
+    fetchPro = (body) => {
+        console.log(body)
+        return Fetch("/login", "post", body);
         // 获取远端图片
 
 
@@ -26,7 +25,7 @@ class Todo {
 decorate(Todo, {
     title: observable,
     collapsed: observable,
-    fetchProjectsSuccess:action,
-    fetchPro:action
+    fetchProjectsSuccess: action,
+    fetchPro: action
 });
 export default new Todo();

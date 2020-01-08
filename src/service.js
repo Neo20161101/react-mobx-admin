@@ -2,7 +2,7 @@ import axios from 'axios';
 import { notification } from 'antd';
 
 const foodstp = "https://foodstp.com/";
-const localhost = "http://localhost:3000/";
+const localhost = "http://192.168.1.101:8081/";
 
 export default async function fetchRequest(url,method,body) {
     return await axios({
