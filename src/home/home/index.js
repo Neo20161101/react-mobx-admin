@@ -18,7 +18,7 @@ class App extends Component {
                     <p className="classs">
                         这是首页
                     </p>
-                    <Link to="/page/about">跳转关于页面</Link>
+                    <Link to="/about">跳转关于页面</Link>
                     <button type="button" onClick={fetchPro} className='btn'>这是首页</button>
                 </header>
             </div>

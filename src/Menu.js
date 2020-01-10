@@ -6,12 +6,37 @@ import { Layout, Menu, Icon } from 'antd';
 import Logo from "./logo.svg";
 const { Header, Sider, Content } = Layout;
 
+
+const { SubMenu } = Menu;
+const RouteWithSubRoutes = route => { //这是循环递归路由；
+    return route.map(item => {
+           if(item.routes){
+            return (
+              <SubMenu key={item.path}
+                title={
+                  <span> 
+                    <Icon type={item.icon} />
+                    <span>{item.name}</span>
+                  </span>
+                } >
+                {RouteWithSubRoutes(item.routes)}
+              </SubMenu>
+            )
+        }
+        return ((!item.hideInMenu) ?
+               <Menu.Item key={item.path}>
+                   <Link to={item.path}><Icon type={item.icon} />{item.name}</Link>
+               </Menu.Item>:null)          
+    })
+};
+
+
 @inject("store") @observer
 class Menus extends Component{
     constructor(props){
         super(props);
         this.state = {
-            SelectedKey:["/about"]
+            SelectedKey:["/tacos"]
         }
     }
 
@@ -21,27 +46,29 @@ class Menus extends Component{
     }
 
     componentDidMount() {
-        //console.log(window.location)
+//        const str = window.location.hash.match(/#(\S*)/);
     }
 
     render(){
         const {SelectedKey} = this.state;
-        console.log(this);
+        const { collapsed,routers } = this.props;
+        
+        
         return(
-            <Sider breakpoint="sm"
-                   collapsedWidth="0"
-                   onBreakpoint={broken => {
-                       console.log(broken);
-                   }}>
-                <div className="logo"><img src={Logo} alt="logo"/>后台管理</div>
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={SelectedKey}>
-                    {routers.map(function (route, i) {
-                        return <Menu.Item key={route.path}>
-                            <Link to={route.path}><Icon type={route.icon} />{route.name}</Link>
-                        </Menu.Item>
-                    })}
-                </Menu>
-            </Sider>
+                <Sider breakpoint="sm"
+                    collapsedWidth="0"
+                    trigger={null}
+                    collapsed={collapsed}
+                    onBreakpoint={broken => {
+                        console.log(broken);
+                    }}>
+                    <div className="logo"><img src={Logo} alt="logo"/>后台管理</div>
+                    <Menu theme="dark" mode="inline" defaultSelectedKeys={SelectedKey}>
+                        {
+                            RouteWithSubRoutes(routers)
+                        }
+                    </Menu>
+                </Sider>
         )
     }
 }

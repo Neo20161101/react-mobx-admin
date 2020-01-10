@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { Provider, observer, inject } from 'mobx-react'
 import { notification } from 'antd';
 
 const foodstp = "https://foodstp.com/";
-const localhost = "http://192.168.1.101:8081/";
+const localhost = "http://192.168.1.209:3000/";
+
 
 export default async function fetchRequest(url,method,body) {
     return await axios({
@@ -10,9 +12,9 @@ export default async function fetchRequest(url,method,body) {
          url: url,
          baseURL: localhost,
          data: body,
-         headers: {'X-Requested-With': 'XMLHttpRequest','Accept':"*/*",'apiCheckSum':'b5a2961c7165bd9c466847cc206b6d94','ApiKey':'88d85d8a6b9d4e409e817dca1c2cd1fb'},
+         headers: {'X-Requested-With': 'XMLHttpRequest','Accept':"*/*",'ApiKey':'88d85d8a6b9d4e409e817dca1c2cd1fb'},
      }).then(function (response) {
-         console.log(response);
+         console.log("response:",response,this);
          if(response.status >= 200 || response.status <= 304){
              return response.data;
          }else {

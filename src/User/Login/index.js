@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Provider, observer, inject } from "mobx-react";
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { Router, Switch, Route } from 'react-router'
-import router from "../../router/router";
+import { Router, Switch, Route } from 'react-router';
+// import router from "../../router/router";
 
 @inject("store") @observer
 class NormalLoginForm extends Component {
@@ -10,18 +10,14 @@ class NormalLoginForm extends Component {
         e.preventDefault();
         const { match, location, history } = this.props
 
-        // const { store: { fetchPro } } = this.props;
-        this.props.store.loggedIn = true;
-        console.log("this.props.store,", this.props.store);
-        //history.push("/about");
+        const { store: { fetchLogin,fetchPro } } = this.props;
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                // fetchPro(values).then(res => {
-                //     console.log(res);
-                // })
-                // history.push("/index");
-                sessionStorage.setItem("loggedIn",1)
-                window.location.href = '/'
+                fetchLogin(values).then(res => {
+//                    sessionStorage.setItem("loggedIn",1)
+//                    history.push("/tacos");
+                    window.location.href = "/";
+                }).catch(error => {console.error(error);})
             }
         });
     };
