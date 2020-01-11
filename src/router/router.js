@@ -2,44 +2,49 @@ import React, { lazy } from 'react';
 
 const Register = lazy(() => import('../User/Register/index'));
 export default [
-    
+
     {
         path: "/login",
         name: 'Login',
-        icon:"user",
-        hideInMenu:true,
+        icon: "user",
+        hideInMenu: true,
         component: lazy(() => import('../User/Login/index'))
     },
     {
         path: "/tacos",
-        name: 'Tacos',
-        icon:"home",
+        name: 'tacos',
+        icon: "home",
         component: lazy(() => import('../home/home/index')),
+    },
+    {
+        path: "/tac",
+        name: 'tac',
+        icon: "user",
         routes: [
             {
-                path: "/tacos/bus",
-                name: "/tacos/bus",
-                icon:"user",
+                path: "/tac/bus",
+                name: "/tac/bus",
+                icon: null,
                 component: lazy(() => import('../About/About/index')),
                 routes: [
                     {
-                        path: "/tacos/bus/bus2",
-                        name: "/tacos/bus/bus2",
-                        icon:"user",
+                        path: "/tac/bus/bus2",
+                        name: "/tac/bus/bus2",
+                        icon: null,
                         component: lazy(() => import('../About/About/index'))
                     },
                     {
-                        path: "/tacos/bus/bus3",
-                        name: "/tacos/bus/bus3",
-                        icon:"user",
+                        path: "/tac/bus/bus3",
+                        name: "/tac/bus/bus3",
+                        icon: null,
                         component: lazy(() => import('../About/About/index'))
                     }
                 ]
             },
             {
-                path: "/tacos/cart",
-                name: "/tacos/Cart",
-                icon:"user",
+                path: "/tac/cart",
+                name: "/tac/Cart",
+                icon: null,
                 component: lazy(() => import('../About/About/index'))
             }
         ]
@@ -47,7 +52,7 @@ export default [
     {
         path: "/about",
         name: 'About',
-        icon:"user",
+        icon: "user",
         component: lazy(() => import('../About/About/index'))
     }
 ]
