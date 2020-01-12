@@ -6,9 +6,8 @@ import './App.css';
 import routers from './router/router';
 import Menus from './Menu';
 import NotFound from './NotFound/index';
-import History from './router/history';
+// import History from './router/history';
 import { Layout, Icon, Spin } from 'antd';
-// import 'antd/dist/antd.css';
 
 const { Header, Sider, Content } = Layout;
 
@@ -74,11 +73,11 @@ class App extends Component {
     render() {
         const { loggedIn, collapsed, Menu } = this.state;
         console.log("loggedIn,", loggedIn)
-        return (
-            <Provider {...this.props}>
-                <BrowserRouter>
-                    <Route path="/" render={() => (
-                        loggedIn ? (
+        if (loggedIn) {
+            return (
+                <Provider {...this.props}>
+                    <BrowserRouter>
+                        <Route path="/" render={() => (
                             <Layout id="components-layout-demo-custom-trigger" >
                                 <Menus routers={Menu} collapsed={collapsed} /> { /*这是左侧导航栏*/}
                                 <Layout>
@@ -106,20 +105,29 @@ class App extends Component {
                                         </Suspense>
                                     </Content >
                                 </Layout>
-                            </Layout >) :
-                            (
-                                <Suspense fallback={< Spin tip="Loading..." > </Spin>}>
-                                    <Switch>
-                                        <Route exact path="/login" component={routers[0].component} />
-                                        {/* <Redirect from='/' to="/login" /> */}
-                                        <Route component={NotFound} />
-                                    </Switch >
-                                </Suspense>
-                            )
+                            </Layout >)
+
+                        } />
+                    </BrowserRouter>
+                </Provider>
+            );
+        }
+        return (
+            <Provider {...this.props}>
+                <BrowserRouter>
+                    <Route path="/" render={() => (
+                        <Suspense fallback={< Spin tip="Loading..." > </Spin>}>
+                            <Switch>
+                                <Route exact path="/login" component={routers[0].component} />
+                                <Redirect exact from='/' to="/login" />
+                                <Route component={NotFound} />
+                            </Switch >
+                        </Suspense>
                     )
                     } />
                 </BrowserRouter>
-            </Provider >);
+            </Provider>
+        );
     }
 }
 

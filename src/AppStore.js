@@ -10,6 +10,7 @@ class Todo {
     title = "app全局";
     loggedIn = false; //是否登陆
     sad = true;
+    //以下公共服务接口
     fetchPro = (body) => {
         return new Promise(function (reslove, reject) {
 

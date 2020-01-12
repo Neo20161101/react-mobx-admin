@@ -1,5 +1,11 @@
 import React, { lazy } from 'react';
+import Fetch from "./service";
 
+console.log("这是routerss")
+
+// Fetch("/users/test", "post", body).then(res=>{
+
+// })
 const Register = lazy(() => import('../User/Register/index'));
 export default [
 
