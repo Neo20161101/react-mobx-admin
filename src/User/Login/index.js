@@ -63,7 +63,7 @@ class NormalLoginForm extends Component {
     );
   }
 }
-export default Form.create({ name: 'normal_login' })();
+export default Form.create({ name: 'normal_login' })(NormalLoginForm);
 
 
 

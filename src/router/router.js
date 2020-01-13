@@ -1,26 +1,20 @@
 import React, { lazy } from 'react';
-import Fetch from "./service";
+//import Fetch from "./service";
 
 console.log("这是routerss")
 
 // Fetch("/users/test", "post", body).then(res=>{
 
 // })
+const Index = lazy(() => import('../home/index'));
 const Register = lazy(() => import('../User/Register/index'));
-export default [
-
-    {
-        path: "/login",
-        name: 'Login',
-        icon: "user",
-        hideInMenu: true,
-        component: lazy(() => import('../User/Login/index'))
-    },
+const Login = lazy(() => import('../User/Login/index'));
+const Routes = [
     {
         path: "/tacos",
         name: 'tacos',
         icon: "home",
-        component: lazy(() => import('../home/home/index')),
+        component: lazy(() => import('../tacos/index')),
     },
     {
         path: "/tac",
@@ -62,3 +56,5 @@ export default [
         component: lazy(() => import('../About/About/index'))
     }
 ]
+
+export { Index,Routes,Login }

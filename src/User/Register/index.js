@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Col, Form, Input, Popover, Progress, Row, Select, message } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { Link } from 'react-router-dom'
-import router from '../../router/router';
 
 import styles from './style.less';
 
@@ -45,12 +44,6 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends Component {
         const account = form.getFieldValue('mail');
         if (BLOCK_NAME_CAMEL_CASE.status === 'ok') {
             message.success('注册成功！');
-            router.push({
-                pathname: '/user/register-result',
-                state: {
-                    account,
-                },
-            });
         }
     }
 
