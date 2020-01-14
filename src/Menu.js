@@ -8,8 +8,8 @@ const { Header, Sider, Content } = Layout;
 
 const { SubMenu } = Menu;
 const RouteWithSubRoutes = route => { //这是循环递归菜单；
-    return route.map(item => {
-        if (item.routes) {
+    return route && route.map(item => {
+        if (item.child) {
             return (
                 <SubMenu key={item.path}
                     title={
@@ -18,7 +18,7 @@ const RouteWithSubRoutes = route => { //这是循环递归菜单；
                             <span>{item.name}</span>
                         </span>
                     } >
-                    {RouteWithSubRoutes(item.routes)}
+                    {RouteWithSubRoutes(item.child)}
                 </SubMenu>
             )
         }
@@ -31,26 +31,27 @@ const RouteWithSubRoutes = route => { //这是循环递归菜单；
 
 
 @inject("store") @observer
-class Menus extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             SelectedKey: ["/tacos"],
-            openKeys: null
+            openKeys: null,
+            routers:props.routers
         }
     }
 
     componentWillMount() {
         // const str = window.location.hash.match(/#(\S*)/)[1];//采用 HashRouter 路由
-        const str = window.location.pathname;//采用 BrowserRouter 路由（需要服务端配置路由返回）
+				const str = window.location.pathname;//采用 BrowserRouter 路由（需要服务端配置路由返回）
         const openKeys = sessionStorage.getItem("openKeys");
         let data = [];
         openKeys && (data = openKeys.split(","));
-        this.setState({ SelectedKey: [str], openKeys: data });
+        this.setState({  openKeys: data });
     }
 
     componentDidMount() {
-        //        const str = window.location.hash.match(/#(\S*)/);
+
     }
 
     onOpenChangeClick = (openKeys) => {
@@ -58,8 +59,9 @@ class Menus extends Component {
     }
 
     render() {
-        const { SelectedKey, openKeys } = this.state;
-        const { collapsed, routers } = this.props;
+        const { SelectedKey,openKeys } = this.state;
+        const { collapsed, routers_menu,pathname } = this.props;
+        console.log("menu,",pathname)
         return (
             <Sider breakpoint="sm"
                 trigger={null}
@@ -69,9 +71,9 @@ class Menus extends Component {
                     // console.log(broken);
                 }}>
                 <div className="logo"><img src={Logo} alt="logo" /></div>
-                <Menu theme="dark" mode="inline" onOpenChange={this.onOpenChangeClick} defaultOpenKeys={openKeys} defaultSelectedKeys={SelectedKey}>
+                <Menu theme="dark" mode="inline" onOpenChange={this.onOpenChangeClick} defaultOpenKeys={openKeys} defaultSelectedKeys={SelectedKey} selectedKeys={[pathname]}>
                     {
-                        RouteWithSubRoutes(routers)
+                        RouteWithSubRoutes(routers_menu)
                     }
                 </Menu>
             </Sider>
@@ -79,4 +81,4 @@ class Menus extends Component {
     }
 }
 
-export default Menus;
+export default App;

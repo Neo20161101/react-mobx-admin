@@ -28,6 +28,7 @@ class App extends Component {
     }
 
     render() {
+			console.log("app,",this.props.store.loggedIn)
         return (
             <Provider {...this.props}>
                 <BrowserRouter>
@@ -36,7 +37,7 @@ class App extends Component {
                             <Switch>
                                 <Route exact path="/login" component={Login} />
                                 <Route path="/" component={Index} />
-                                <Route component={NotFound} />
+//                                <Route component={NotFound} />
                             </Switch>
                         </Suspense>
                     )

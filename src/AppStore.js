@@ -1,5 +1,5 @@
 import { decorate, observable, action } from "mobx";
-import Fetch from "./service";
+import {fetchRequest} from "./service";
 //import List from './Mock/list.json';
 
 class Todo {
@@ -9,8 +9,8 @@ class Todo {
     id = Math.random();
     title = "app全局";
     loggedIn = false; //是否登陆
-    sad = true;
-    //以下公共服务接口
+    userInfo = {name:"name",ApiKey:"123456789"};
+    //以下公共接口
     fetchPro = (body) => {
         return new Promise(function (reslove, reject) {
 
@@ -24,15 +24,19 @@ class Todo {
     };
     fetchTest = (body) => {
         // 测试
-        return Fetch("/users/test", "post", body);
+        return fetchRequest("/users/test", "post", body);
     };
+		fetchMenu = (body) => {
+        // 导航菜单
+        return fetchRequest("/users/menu", "post", body);
+		};
     fetchLoginout = (body) => {
-        // 测试
-        return Fetch("/users/loginout", "post", body);
+        // 退出
+        return fetchRequest("/users/loginout", "post", body);
     };
     fetchLogin = (body) => {
         // 登录
-        return Fetch("/users/login", "post", body);
+        return fetchRequest("/users/login", "post", body);
     }
 
 }

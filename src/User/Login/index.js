@@ -14,9 +14,9 @@ class NormalLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         fetchLogin(values).then(res => {
-          //                    sessionStorage.setItem("loggedIn",1)
-          //                    history.push("/tacos");
-          window.location.href = "/tacos";
+            sessionStorage.setItem("loggedIn",1)
+            history.push("/tacos");
+//          window.location.href = "/tacos";
         }).catch(error => { console.error(error); })
       }
     });

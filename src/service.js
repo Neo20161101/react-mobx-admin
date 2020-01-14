@@ -5,16 +5,21 @@ import { notification } from 'antd';
 const foodstp = "https://foodstp.com/";
 const localhost = "http://localhost:3000/";
 
+const hearder = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'ApiKey': '88d85d8a6b9d4e409e817dca1c2cd1fb'
+}
 
-export default async function fetchRequest(url, method, body) {
+
+async function fetchRequest(url, method, body) {
     return await axios({
         method: method,
         url: url,
         baseURL: localhost,
         data: body,
-        headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': "*/*", 'ApiKey': '88d85d8a6b9d4e409e817dca1c2cd1fb' },
+        headers: hearder
     }).then(function(response) {
-        console.log("response:", response, this);
+        console.log("response:", response);
         if (response.status >= 200 || response.status <= 304) {
             return response.data;
         } else {
@@ -63,3 +68,5 @@ export default async function fetchRequest(url, method, body) {
     });
 
 }
+
+export {hearder,fetchRequest} 
