@@ -7,11 +7,11 @@ const localhost = "http://localhost:3000/";
 
 const hearder = {
     'X-Requested-With': 'XMLHttpRequest',
-    'ApiKey': '88d85d8a6b9d4e409e817dca1c2cd1fb'
+    'ApiKey': ''
 }
 
 
-async function fetchRequest(url, method, body) {
+async function Fetch(url, method, body) {
     return await axios({
         method: method,
         url: url,
@@ -69,4 +69,4 @@ async function fetchRequest(url, method, body) {
 
 }
 
-export {hearder,fetchRequest} 
+export {hearder,Fetch} 

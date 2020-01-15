@@ -61,7 +61,6 @@ class App extends Component {
     render() {
         const { SelectedKey,openKeys } = this.state;
         const { collapsed, routers_menu,pathname } = this.props;
-        console.log("menu,",pathname)
         return (
             <Sider breakpoint="sm"
                 trigger={null}

@@ -26,12 +26,6 @@ const Routes = [
                         name: "/tac/bus/bus2",
                         icon: null,
                         component: lazy(() => import('../About/About/index'))
-                    },
-                    {
-                        path: "/tac/bus/bus3",
-                        name: "/tac/bus/bus3",
-                        icon: null,
-                        component: lazy(() => import('../About/About/index'))
                     }
                 ]
             },
@@ -45,7 +39,7 @@ const Routes = [
     },
     {
         path: "/about",
-        name: 'About',
+        name: '关于',
         icon: "user",
         component: lazy(() => import('../About/About/index'))
     }

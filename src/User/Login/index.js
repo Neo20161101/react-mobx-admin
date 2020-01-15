@@ -10,11 +10,12 @@ class NormalLoginForm extends Component {
     e.preventDefault();
     const { match, location, history } = this.props
 
-    const { store: { fetchLogin, fetchPro } } = this.props;
+    const { store: { fetchLogin,ApiKey } } = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
         fetchLogin(values).then(res => {
-            sessionStorage.setItem("loggedIn",1)
+            sessionStorage.setItem("ApiKey","88d85d8a6b9d4e409e817dca1c2cd1fb");
+            this.props.store.ApiKey = "88d85d8a6b9d4e409e817dca1c2cd1fb";
             history.push("/tacos");
 //          window.location.href = "/tacos";
         }).catch(error => { console.error(error); })

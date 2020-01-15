@@ -8,8 +8,7 @@ class App extends Component {
     
   componentDidMount() {
       Http.fetchTest().then(res=>{
-          
-      console.log(res)
+
       })
   }
     
