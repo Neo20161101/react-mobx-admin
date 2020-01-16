@@ -3,9 +3,9 @@ import { Provider, observer, inject } from "mobx-react";
 import { Link, BrowserRouter } from 'react-router-dom';
 import { Router, Switch, Route, Redirect } from 'react-router';
 import { Layout, Icon, Spin } from 'antd';
-import { Routes } from '../router/router';
-import NotFound from '../NotFound/index';
-import Menus from '../Menu';
+import { Routes } from '@/router/router';
+import NotFound from '@/NotFound/index';
+import Menus from '@/Menu';
 
 const { Header, Content } = Layout;
 

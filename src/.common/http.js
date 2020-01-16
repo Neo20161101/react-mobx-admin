@@ -1,5 +1,5 @@
 import {Fetch,hearder} from "./service";
-import store from "./AppStore";
+import store from "../AppStore";
 
 const setHearder = () => {
     const { ApiKey } = store;

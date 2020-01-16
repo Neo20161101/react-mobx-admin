@@ -1,14 +1,14 @@
 import React, { lazy } from 'react';
 
-const Index = lazy(() => import('../home/index'));
-const Register = lazy(() => import('../User/Register/index'));
-const Login = lazy(() => import('../User/Login/index'));
+const Index = lazy(() => import('@/view/home/index'));
+const Register = lazy(() => import('@/view/User/Register/index'));
+const Login = lazy(() => import('@/view/User/Login/index'));
 const Routes = [
     {
         path: "/tacos",
         name: 'tacos',
         icon: "home",
-        component: lazy(() => import('../tacos/index'))
+        component: lazy(() => import('@/view/tacos/index'))
     },
     {
         path: "/tac",
@@ -19,13 +19,13 @@ const Routes = [
                 path: "/tac/bus",
                 name: "/tac/bus",
                 icon: null,
-                component: lazy(() => import('../About/About/index')),
+                component: lazy(() => import('@/view/About/About/index')),
                 routes: [
                     {
                         path: "/tac/bus/bus2",
                         name: "/tac/bus/bus2",
                         icon: null,
-                        component: lazy(() => import('../About/About/index'))
+                        component: lazy(() => import('@/view/About/About/index'))
                     }
                 ]
             },
@@ -33,7 +33,7 @@ const Routes = [
                 path: "/tac/cart",
                 name: "/tac/Cart",
                 icon: null,
-                component: lazy(() => import('../About/About/index'))
+                component: lazy(() => import('@/view/About/About/index'))
             }
         ]
     },
@@ -41,7 +41,7 @@ const Routes = [
         path: "/about",
         name: '关于',
         icon: "user",
-        component: lazy(() => import('../About/About/index'))
+        component: lazy(() => import('@/view/About/About/index'))
     }
 ]
 

@@ -1,5 +1,5 @@
 import { decorate, observable, action } from "mobx";
-import {Fetch} from "./service";
+import {Fetch} from "./.common/service";
 //import List from './Mock/list.json';
 
 class Todo {
@@ -13,8 +13,9 @@ class Todo {
     ApiKey = null;
     //以下公共接口
     fetchPro = (body) => {
+        this.title = "更改全局";
         return new Promise(function (reslove, reject) {
-
+            
             reslove({ code: 200 })  //状态由等待变为成功，传的参数作为then函数中成功函数的实参
 
             //reject('失败')  //状态由等待变为失败，传的参数作为then函数中失败函数的实参

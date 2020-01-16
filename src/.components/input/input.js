@@ -26,7 +26,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App" ref="textInput">
+            <div className="App">
                 <header>
                     <p>
                         这是输入框
