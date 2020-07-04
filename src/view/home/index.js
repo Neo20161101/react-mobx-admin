@@ -91,7 +91,7 @@ class App extends Component {
 															</Switch >
 													</Suspense>
 											</Content >
-									</Layout>
+									</Layout>		
 							</Layout>
         );
     }
