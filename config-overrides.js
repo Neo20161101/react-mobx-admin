@@ -12,6 +12,8 @@ module.exports = override(
     }),
     addLessLoader({
         javascriptEnabled: true,
+        // strictMath: true,
+        // noIeCompat: true,
         modifyVars: {
             '@primary-color': '#ff0000', // 全局主色
             '@link-color': '#1890ff', // 链接色
@@ -26,7 +28,11 @@ module.exports = override(
             '@border-radius-base': '4px', // 组件/浮层圆角
             '@border-color-base': '#d9d9d9', // 边框色
             '@box-shadow-base': '0 2px 8px rgba(0, 0, 0, 0.15)', // 浮层阴影
-        }
+        },
+        // cssLoaderOptions: {}, // .less file used css-loader option, not all CSS file.
+        // cssModules: {
+        //     localIdentName: "[path][name]__[local]--[hash:base64:5]", // if you use CSS Modules, and custom `localIdentName`, default is '[local]--[hash:base64:5]'.
+        // },
     }),
     addDecoratorsLegacy(),
 //      (config)=>{ //暴露webpack的配置 config ,evn
