@@ -13,7 +13,6 @@ class App extends Component {
 
     render() {
         const { store:{title} } = this.props;
-        console.log("this.props,",this.props)
         return (
             <Provider AboutStore={Store}>
                 <div className="App">

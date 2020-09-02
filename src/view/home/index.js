@@ -2,12 +2,14 @@ import React, {Component, Suspense} from 'react';
 import {Provider, observer, inject} from "mobx-react";
 // import {Link, BrowserRouter} from 'react-router-dom';
 import {Router, Switch, Route, Redirect} from 'react-router';
-import {Layout, Icon, Spin,Tabs} from 'antd';
+import {Layout, Icon, Spin,Tabs,Breadcrumb} from 'antd';
 import {Routes} from '@/router/router';
 import NotFound from '@/NotFound/index';
 import Menus from '@/Menu';
+import './style.less';
 
 const {Header, Content} = Layout;
+const { TabPane } = Tabs;
 
 const RouteWithSubRoutes = Menu =>  //这是循环递归路由；
 {
@@ -36,8 +38,14 @@ class App extends Component {
         super(props)
         this.state = {
             collapsed: false,
-            Menu: [{path: "/tacos", name: 'tacos', icon: "user"}]
+            Menu: [{path: "/tacos", name: 'tacos', icon: "user"}],
+            panes:[
+                { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1' },
+                { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2' }
+            ],
+            activeKey:'1'
         }
+        this.newTabIndex = 0;
     }
 
     componentDidMount() {
@@ -61,11 +69,43 @@ class App extends Component {
             collapsed: !this.state.collapsed,
         });
     }
+    onChange = activeKey => {
+        this.setState({ activeKey });
+    };
+
+    onEdit = (targetKey, action) => {
+        this[action](targetKey);
+    };
+
+    remove = targetKey => {
+        let { activeKey } = this.state;
+        let lastIndex;
+        this.state.panes.forEach((pane, i) => {
+            if (pane.key === targetKey) {
+                lastIndex = i - 1;
+            }
+        });
+        const panes = this.state.panes.filter(pane => pane.key !== targetKey);
+        if (panes.length && activeKey === targetKey) {
+            if (lastIndex >= 0) {
+                activeKey = panes[lastIndex].key;
+            } else {
+                activeKey = panes[0].key;
+            }
+        }
+        this.setState({ panes, activeKey });
+    };
 
     render() {
-        const {collapsed, Menu} = this.state;
+        const {collapsed, Menu,panes} = this.state;
+        const { store:{todos} } = this.props;
         const pathname = window.location.pathname;//采用 BrowserRouter 路由（需要服务端配置路由）
-        console.log()
+        //todos.finished
+        console.log(todos,todos.splice())
+        // this.props.store.todos.filter(todo => {
+        //     console.log(this.props.store.todos)
+        // })
+
         return (
             <Layout id="components-layout-demo-custom-trigger">
                 <Menus routers_menu={Menu} collapsed={collapsed} pathname={pathname}/> { /*这是左侧导航栏*/}
@@ -75,7 +115,28 @@ class App extends Component {
                               type={collapsed ? 'menu-unfold' : 'menu-fold'}
                               onClick={this.onCollapsedToggleClick}/>
                     </Header>
-                    <div>sadsad</div>
+                    <div style={{borderBottom:'1px solid #e6e6e6'}}>
+                        <Tabs
+                            hideAdd
+                            onChange={this.onChange}
+                            activeKey={this.state.activeKey}
+                            type="editable-card"
+                            onEdit={this.onEdit}
+                        >
+                            {todos.map(pane => (
+                                <TabPane tab={pane.title} key={pane.key}>
+                                    <div style={{backgroundColor:'#fff',padding:'20px'}}>
+                                        <Breadcrumb separator=">">
+                                            <Breadcrumb.Item>Home</Breadcrumb.Item>
+                                            <Breadcrumb.Item href="">Application Center</Breadcrumb.Item>
+                                            <Breadcrumb.Item href="">Application List</Breadcrumb.Item>
+                                            <Breadcrumb.Item>{pane.content}</Breadcrumb.Item>
+                                        </Breadcrumb>
+                                    </div>
+                                </TabPane>
+                            ))}
+                        </Tabs>
+                    </div>
                     <Content style={
                         {
                             margin: '24px 16px',

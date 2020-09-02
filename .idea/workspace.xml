@@ -33,17 +33,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fcbb2ad-aefc-40ac-84fc-536eb8d5ef70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/User/Login/style.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/home/style.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/config-overrides.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.common/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/.common/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.common/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/.common/service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/User/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/User/Login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/About/About/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/About/About/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +58,12 @@
     <option name="PUSH_TAGS">
       <GitPushTagMode />
     </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
@@ -110,6 +111,7 @@
       <workItem from="1565321918979" duration="41000" />
       <workItem from="1578833545709" duration="174000" />
       <workItem from="1598940070480" duration="5817000" />
+      <workItem from="1599015759125" duration="5978000" />
     </task>
     <task id="LOCAL-00001" summary="修复react-routery引入">
       <created>1563264915635</created>

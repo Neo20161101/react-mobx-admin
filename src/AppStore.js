@@ -13,6 +13,11 @@ class Todo {
     loggedIn = false; //是否登陆
     userInfo = {name: "name"};
     ApiKey = null;
+    @observable panes:[];
+    @observable todos = [
+        { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1' },
+        { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2' }
+    ];
     //以下公共接口
     fetchMenu = (body) => {
         // 导航菜单
@@ -31,7 +36,6 @@ class Todo {
 
 decorate(Todo, {
     title: observable,
-    collapsed: observable,
     fetchLogin: action,
     fetchLoginout: action,
     fetchPro: action
