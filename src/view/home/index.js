@@ -39,10 +39,6 @@ class App extends Component {
         this.state = {
             collapsed: false,
             Menu: [{path: "/tacos", name: 'tacos', icon: "user"}],
-            panes:[
-                { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1' },
-                { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2' }
-            ],
             activeKey:'1'
         }
         this.newTabIndex = 0;
@@ -80,12 +76,12 @@ class App extends Component {
     remove = targetKey => {
         let { activeKey } = this.state;
         let lastIndex;
-        this.state.panes.forEach((pane, i) => {
+        this.props.store.todos.forEach((pane, i) => {
             if (pane.key === targetKey) {
                 lastIndex = i - 1;
             }
         });
-        const panes = this.state.panes.filter(pane => pane.key !== targetKey);
+        const panes = this.props.store.todos.filter(pane => pane.key !== targetKey);
         if (panes.length && activeKey === targetKey) {
             if (lastIndex >= 0) {
                 activeKey = panes[lastIndex].key;
@@ -93,15 +89,16 @@ class App extends Component {
                 activeKey = panes[0].key;
             }
         }
+        this.props.store.todos = panes;
         this.setState({ panes, activeKey });
     };
 
     render() {
-        const {collapsed, Menu,panes} = this.state;
+        const {collapsed, Menu} = this.state;
         const { store:{todos} } = this.props;
         const pathname = window.location.pathname;//采用 BrowserRouter 路由（需要服务端配置路由）
         //todos.finished
-        console.log(todos,todos.splice())
+        console.log(this.props.store)
         // this.props.store.todos.filter(todo => {
         //     console.log(this.props.store.todos)
         // })
