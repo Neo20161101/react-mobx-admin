@@ -14,7 +14,7 @@ const RouteWithSubRoutes = route => { //这是循环递归菜单；
                 <SubMenu key={item.path}
                     title={
                         <span>
-                            {item.icon ? <Icon type={item.icon} /> : null}
+                            {/*{item.icon ? <Icon type={item.icon} /> : null}*/}
                             <span>{item.name}</span>
                         </span>
                     } >
@@ -23,8 +23,8 @@ const RouteWithSubRoutes = route => { //这是循环递归菜单；
             )
         }
         return ((!item.hideInMenu) ?
-            <Menu.Item key={item.path}>
-                <Link to={item.path}>{item.icon ? <Icon type={item.icon} /> : null}<span>{item.name}</span></Link>
+            <Menu.Item key={item.path} title={item.name}>
+                <Link to={item.path}>{item.icon ? 'icon' : null}<span>{item.name}</span></Link>
             </Menu.Item> : null)
     })
 };
@@ -54,6 +54,25 @@ class App extends Component {
 
     }
 
+    onClick = (e) => {
+        console.log(e.keyPath);
+    }
+
+    handleClick = (e) => {
+        const { title,openKeys } = e.item.props;
+        const { store:{todos} } = this.props;
+        let toggle = true;
+        // console.log(e)
+        todos.map(item=>{
+            if (item.title==title){
+                toggle = false;
+            }
+        })
+        if (toggle){
+            this.props.store.todos.push({ title: title, content: openKeys, key: todos.length })
+        }
+    }
+
     onOpenChangeClick = (openKeys) => {
         sessionStorage.setItem("openKeys", openKeys)
     }
@@ -70,7 +89,7 @@ class App extends Component {
                     // console.log(broken);
                 }}>
                 <div className="logo"><img src={Logo} alt="logo" /></div>
-                <Menu theme="dark" mode="inline" onOpenChange={this.onOpenChangeClick} defaultOpenKeys={openKeys} defaultSelectedKeys={SelectedKey} selectedKeys={[pathname]}>
+                <Menu theme="dark" mode="inline" onClick={this.onClick} onSelect={this.handleClick} onOpenChange={this.onOpenChangeClick} defaultOpenKeys={openKeys} defaultSelectedKeys={SelectedKey} selectedKeys={[pathname]}>
                     {
                         RouteWithSubRoutes(routers_menu)
                     }

@@ -39,7 +39,7 @@ class App extends Component {
         this.state = {
             collapsed: false,
             Menu: [{path: "/tacos", name: 'tacos', icon: "user"}],
-            activeKey:'1'
+            activeKey:'0'
         }
         this.newTabIndex = 0;
     }
@@ -75,14 +75,15 @@ class App extends Component {
 
     remove = targetKey => {
         let { activeKey } = this.state;
+        const { store:{todos} } = this.props;
         let lastIndex;
-        this.props.store.todos.forEach((pane, i) => {
-            if (pane.key === targetKey) {
+        todos.forEach((pane, i) => {
+            if (pane.key == targetKey) {
                 lastIndex = i - 1;
             }
         });
-        const panes = this.props.store.todos.filter(pane => pane.key !== targetKey);
-        if (panes.length && activeKey === targetKey) {
+        const panes = todos.filter(pane => pane.key != targetKey);
+        if (panes.length && activeKey == targetKey) {
             if (lastIndex >= 0) {
                 activeKey = panes[lastIndex].key;
             } else {
@@ -94,7 +95,7 @@ class App extends Component {
     };
 
     render() {
-        const {collapsed, Menu} = this.state;
+        const {collapsed, Menu,activeKey} = this.state;
         const { store:{todos} } = this.props;
         const pathname = window.location.pathname;//采用 BrowserRouter 路由（需要服务端配置路由）
         //todos.finished
@@ -116,7 +117,7 @@ class App extends Component {
                         <Tabs
                             hideAdd
                             onChange={this.onChange}
-                            activeKey={this.state.activeKey}
+                            activeKey={activeKey}
                             type="editable-card"
                             onEdit={this.onEdit}
                         >
@@ -124,10 +125,11 @@ class App extends Component {
                                 <TabPane tab={pane.title} key={pane.key}>
                                     <div style={{backgroundColor:'#fff',padding:'20px'}}>
                                         <Breadcrumb separator=">">
-                                            <Breadcrumb.Item>Home</Breadcrumb.Item>
-                                            <Breadcrumb.Item href="">Application Center</Breadcrumb.Item>
-                                            <Breadcrumb.Item href="">Application List</Breadcrumb.Item>
-                                            <Breadcrumb.Item>{pane.content}</Breadcrumb.Item>
+                                            {
+                                                pane.content.map(list=>
+                                                    <Breadcrumb.Item key={list}>{list}</Breadcrumb.Item>
+                                                )
+                                            }
                                         </Breadcrumb>
                                     </div>
                                 </TabPane>

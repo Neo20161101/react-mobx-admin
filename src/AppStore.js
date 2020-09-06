@@ -14,9 +14,8 @@ class Todo {
     userInfo = {name: "name"};
     ApiKey = null;
     @observable panes:[];
-    @observable todos = [
-        { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1' },
-        { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2' }
+    todos = [
+        { title: 'Tab 1', content: ['Content of Tab Pane 0'], key: 0 }
     ];
     //以下公共接口
     fetchMenu = (body) => {
@@ -36,6 +35,7 @@ class Todo {
 
 decorate(Todo, {
     title: observable,
+    todos:observable,
     fetchLogin: action,
     fetchLoginout: action,
     fetchPro: action
