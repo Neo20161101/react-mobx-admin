@@ -1,48 +1,32 @@
 import React, { lazy } from 'react';
-
-const Index = lazy(() => import('@/view/home/index'));
-const Register = lazy(() => import('@/view/User/Register/index'));
-const Login = lazy(() => import('@/view/User/Login/index'));
-const Routes = [
+import {
+    createBrowserRouter
+} from "react-router-dom";
+import Index from "@/view/home/home";
+import ErrorPage from "../notFound/error-page";
+const Test = lazy(() => import('@/view/test/test'));
+// import NotFound from './notFound/404';
+// const Register = lazy(() => import('@/view/User/Register/index'));
+// const Login = lazy(() => import('@/view/User/Login/index'));
+const Routes = createBrowserRouter([
     {
-        path: "/tacos",
-        name: 'tacos',
-        icon: "home",
-        component: lazy(() => import('@/view/tacos/index'))
-    },
-    {
-        path: "/tac",
-        name: 'tac',
-        icon: "user",
-        routes: [
+        path: "/",
+        element: <Index />,
+        errorElement: <ErrorPage />, // 发生错误页面
+        children: [
             {
-                path: "/tac/bus",
-                name: "/tac/bus",
-                icon: null,
-                component: lazy(() => import('@/view/About/About/index')),
-                routes: [
-                    {
-                        path: "/tac/bus/bus2",
-                        name: "/tac/bus/bus2",
-                        icon: null,
-                        component: lazy(() => import('@/view/About/About/index'))
-                    }
-                ]
+                path: "test",
+                element: <Test />,
+                loader: async (option) => {
+                    console.log('loaderloaderloader,',option);
+                }, // 装载器
             },
-            {
-                path: "/tac/cart",
-                name: "/tac/Cart",
-                icon: null,
-                component: lazy(() => import('@/view/About/About/index'))
-            }
-        ]
+        ],
     },
     {
-        path: "/about",
-        name: '关于',
-        icon: "user",
-        component: lazy(() => import('@/view/About/About/index'))
+        path:"/asd",
+        element: <div>asd21434535436576</div>,
     }
-]
+]);
 
-export { Index,Routes,Login }
+export { Routes }

@@ -2,12 +2,12 @@ import {Fetch,hearder} from "./service";
 import store from "../AppStore";
 
 const setHearder = () => {
-    const { ApiKey } = store;
-    if(ApiKey){
-        hearder.ApiKey = ApiKey;
+    const { token } = store;
+    if(token){
+        hearder.token = token;
     }else{
         // 防刷新处理
-        hearder.ApiKey = sessionStorage.getItem("ApiKey");
+        hearder.token = sessionStorage.getItem("token");
     }
 }
 

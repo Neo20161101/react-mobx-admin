@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Provider, observer, inject } from 'mobx-react'
 import { notification } from 'antd';
 
 const foodstp = "https://foodstp.com/";
@@ -7,7 +6,7 @@ const localhost = "http://localhost:3001/";
 
 const hearder = {
     'X-Requested-With': 'XMLHttpRequest',
-    'ApiKey': ''
+    'token': ''
 }
 
 
@@ -69,4 +68,4 @@ async function Fetch(url, method, body) {
 
 }
 
-export {hearder,Fetch} 
+export {hearder,Fetch}

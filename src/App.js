@@ -1,51 +1,17 @@
 import React, { Component, Suspense } from 'react';
-import { Provider, observer, inject } from 'mobx-react';
-import { HashRouter, BrowserRouter } from 'react-router-dom';
-import { Router, Switch, Route, Redirect } from 'react-router';
-import { Index,Routes,Login } from './router/router';
-import NotFound from './NotFound/index';
-// import History from './router/history';
+import { RouterProvider } from "react-router-dom";
+import { Provider } from 'mobx-react';
+import { Routes } from './router/router';
 import { Spin } from 'antd';
+import 'antd/dist/antd.less';
 import './App.css';
 
-
-@inject("store") @observer
-class App extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            loggedIn: props.store.loggedIn
-        }
-    }
-
-    componentWillMount() {
-            
-    }
-
-    componentDidMount() {
-
-    }
-
-    render() {
-			console.log("app,",this.props.store.loggedIn)
-        return (
-            <Provider {...this.props}>
-                <BrowserRouter>
-                    <Route path="/" render={() => (
-                        <Suspense fallback={< Spin tip="Loading..." > </Spin>}>
-                            <Switch>
-                                <Route exact path="/login" component={Login} />
-                                <Route path="/" component={Index} />
-//                                <Route component={NotFound} />
-                            </Switch>
-                        </Suspense>
-                    )
-                    } />
-                </BrowserRouter>
-            </Provider>
-        );
-    }
+function App(props) {
+  return (
+      <Provider {...props}>
+          <RouterProvider router={Routes} fallbackElement={<Spin tip="Loading..." />} />
+      </Provider>
+  );
 }
 
 export default App;
