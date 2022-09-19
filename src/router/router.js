@@ -3,7 +3,7 @@ import {
     createBrowserRouter
 } from "react-router-dom";
 import Index from "@/view/home/home";
-const ErrorPage = lazy(() => import('../notFound2/error-page'));
+const ErrorPage = lazy(() => import('../notFound/error-page'));
 const Test = lazy(() => import('@/view/test/test'));
 const Routes = createBrowserRouter([
     {
