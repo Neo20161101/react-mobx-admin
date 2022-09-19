@@ -32,28 +32,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fcbb2ad-aefc-40ac-84fc-536eb8d5ef70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/setupProxy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/http.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reportWebVitals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/home/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/test/test.js" afterDir="false" />
+    <list default="true" id="0fcbb2ad-aefc-40ac-84fc-536eb8d5ef70" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +100,7 @@
       <workItem from="1578833545709" duration="174000" />
       <workItem from="1598940070480" duration="5817000" />
       <workItem from="1599015759125" duration="5978000" />
-      <workItem from="1663582412815" duration="1457000" />
+      <workItem from="1663582412815" duration="2223000" />
     </task>
     <task id="LOCAL-00001" summary="修复react-routery引入">
       <created>1563264915635</created>
@@ -151,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563334798057</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Default Changelist">
+      <created>1663583997113</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663583997113</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +159,7 @@
     <MESSAGE value="修复react-routery引入" />
     <MESSAGE value="添加antd；菜单栏" />
     <MESSAGE value="更新菜单栏和封装请求方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新菜单栏和封装请求方式" />
+    <MESSAGE value="Default Changelist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Default Changelist" />
   </component>
 </project>
