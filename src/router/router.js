@@ -3,11 +3,8 @@ import {
     createBrowserRouter
 } from "react-router-dom";
 import Index from "@/view/home/home";
-import ErrorPage from "../notFound/error-page";
+const ErrorPage = lazy(() => import('../notFound/error-page'));
 const Test = lazy(() => import('@/view/test/test'));
-// import NotFound from './notFound/404';
-// const Register = lazy(() => import('@/view/User/Register/index'));
-// const Login = lazy(() => import('@/view/User/Login/index'));
 const Routes = createBrowserRouter([
     {
         path: "/",
@@ -18,14 +15,10 @@ const Routes = createBrowserRouter([
                 path: "test",
                 element: <Test />,
                 loader: async (option) => {
-                    console.log('loaderloaderloader,',option);
+                    // 跳转路由前 逻辑操作
                 }, // 装载器
-            },
+            }
         ],
-    },
-    {
-        path:"/asd",
-        element: <div>asd21434535436576</div>,
     }
 ]);
 

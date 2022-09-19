@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from 'antd';
 import myStore from '../../AppStore';
 function App(props) {
-    console.log('props,',props,myStore)
     const navigate = useNavigate();
     return (
         <div className="App">
