@@ -33,7 +33,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fcbb2ad-aefc-40ac-84fc-536eb8d5ef70" name="Default Changelist" comment="Default Changelist">
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +100,7 @@
       <workItem from="1578833545709" duration="174000" />
       <workItem from="1598940070480" duration="5817000" />
       <workItem from="1599015759125" duration="5978000" />
-      <workItem from="1663582412815" duration="2223000" />
+      <workItem from="1663582412815" duration="2682000" />
     </task>
     <task id="LOCAL-00001" summary="修复react-routery引入">
       <created>1563264915635</created>
@@ -137,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663583997113</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Default Changelist">
+      <created>1663584919913</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663584919913</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
